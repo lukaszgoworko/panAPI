@@ -1,0 +1,41 @@
+version: "3.1"
+services:
+  web:
+    container_name: web
+    restart: always
+    image: nginx:1.13.0
+    ports:
+      - 8080:80
+    volumes:
+      - ./API:/var/www/html
+      - ./conf/nginx/sites:/etc/nginx/conf.d
+      - ./logs/nginx:/var/log/nginx
+    links:
+      - php
+      - postgres
+    depends_on:
+      - php
+      - postgres
+  php:
+    container_name: php
+    restart: always
+    build: ./build/php/
+    volumes:
+      - ./API:/var/www/html
+      - ./logs/php/:/var/log
+    links:
+      - postgres
+  postgres:
+    container_name: postgres
+    env_file:
+      - ./conf/postgres/.env
+    restart: always
+    build: ./build/postgres/
+    ports:
+      - 5432:5432
+    volumes:
+      - ./logs/postgres/:/var/log
+      - pan_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  pan_postgres_data:
