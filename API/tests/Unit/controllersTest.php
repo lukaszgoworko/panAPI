@@ -1,5 +1,6 @@
 <?php
 
+
 use Silex\WebTestCase;
 
 class controllersTest extends WebTestCase
@@ -16,9 +17,9 @@ class controllersTest extends WebTestCase
 
     public function createApplication()
     {
-        $app = require __DIR__.'/../src/app.php';
-        require __DIR__.'/../config/dev.php';
-        require __DIR__.'/../src/controllers.php';
+        $app = require __DIR__.'/../../app/app.php';
+        require __DIR__.'/../../config/dev.php';
+        require __DIR__.'/../../app/controllers.php';
         $app['session.test'] = true;
 
         return $this->app = $app;

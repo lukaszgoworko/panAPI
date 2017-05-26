@@ -1,10 +1,10 @@
 {
-	"name" : "fabpot/silex-skeleton",
-	"description" : "A pre-configured skeleton for the Silex microframework",
+	"name" : "LukaszGoworko/panAPI",
+	"description" : "The API for pan App",
 	"license" : "MIT",
 	"type" : "project",
 	"require" : {
-		"php" : ">=5.5.9",
+		"php" : ">=7.1",
 		"silex/silex" : "~2.0",
 		"silex/web-profiler" : "~2.0",
 		"symfony/asset" : "~2.8|^3.0",
@@ -24,22 +24,25 @@
 		"symfony/validator" : "~2.8|^3.0"
 	},
 	"autoload" : {
-		"psr-0" : {
-			"" : "src/"
+		"psr-4" : {
+			"LukaszGoworko\\pan\\api\\" : "src/",
+			"LukaszGoworko\\pan\\api\\App\\" : "app/",
+			"LukaszGoworko\\pan\\api\\UserContext\\" : "contexts/UserContext/src/"
 		}
 	},
-	"extra" : {
-		"branch-alias" : {
-			"dev-master" : "2.0.x-dev"
+	"autoload-dev" : {
+		"psr-4" : {
+			"LukaszGoworko\\pan\\api\\Tests\\" : "tests/",
+			"LukaszGoworko\\pan\\api\\UserContext\\Tests\\" : "contexts/UserContext/tests/"
 		}
 	},
 	"scripts" : {
-		"run" : [
-			"echo 'Started web server on http://localhost:8888'",
-			"php -S localhost:8888 -t web"
+		"unit" : [
+			"echo 'start running unit tests'",
+			"vendor/bin/phpunit --colors=always"
 		]
 	},
-	"require-dev": {
-		"phpunit/phpunit": "^6.1"
+	"require-dev" : {
+		"phpunit/phpunit" : "~6.1"
 	}
 }
