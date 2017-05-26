@@ -3,7 +3,7 @@ services:
   web:
     container_name: web
     restart: always
-    image: nginx:1.13.0
+    build: ./build/my_nginx_ssl/
     ports:
       - 8080:80
     volumes:
