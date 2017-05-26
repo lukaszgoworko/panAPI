@@ -5,7 +5,8 @@ services:
     restart: always
     build: ./build/my_nginx_ssl/
     ports:
-      - 8080:80
+      - 80:80
+      - 443:443
     volumes:
       - ./API:/var/www/html
       - ./conf/nginx/sites:/etc/nginx/conf.d
